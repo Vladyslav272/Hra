@@ -1,0 +1,6 @@
+chtěl bych udělat hru na podobě Mario nebo Geometry Dash
+
+pro hru udělam vlastní grafiku a vytvořím úrovně
+
+pokuď se hra povede přidam více úrovní 
+
