@@ -37,6 +37,11 @@ while True:
     if stisknuto[pygame.K_LEFT]:
         pozice_ctverce_x -= rychlost
     
+    if pozice_ctverce_x < 0:
+        pozice_ctverce_x = 0
+    if pozice_ctverce_x + sirka_ctverce > sirka_okna:
+        pozice_ctverce_x = sirka_okna - sirka_ctverce
+    
     okno.fill(cerna)
     
     ctverec = pygame.draw.rect(okno, bila, ((pozice_ctverce_x, pozice_ctverce_y), (sirka_ctverce, vyska_ctverce)))
