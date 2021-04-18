@@ -11,3 +11,7 @@ rychlost = 8
 
 cerna = (0, 0, 0)
 bila = (255, 255, 255)
+
+#okno
+okno = pygame.display.set_mode((sirka_okna, vyska_okna))
+pygame.display.set_caption(("hra"))
