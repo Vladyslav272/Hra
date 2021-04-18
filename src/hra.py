@@ -32,7 +32,8 @@ while True:
     if stisknuto[pygame.K_ESCAPE]:
         pygame.quit()
         sys.exit()
-        
+    
+    #ovladani
     if stisknuto[pygame.K_RIGHT]:
         pozice_ctverce_x += rychlost
     if stisknuto[pygame.K_LEFT]:
@@ -42,6 +43,7 @@ while True:
     if stisknuto[pygame.K_DOWN]:
         pozice_ctverce_y += rychlost
     
+    #omezeni pohybu
     if pozice_ctverce_x < 0:
         pozice_ctverce_x = 0
     if pozice_ctverce_x + sirka_ctverce > sirka_okna:
@@ -54,6 +56,8 @@ while True:
         
     okno.fill(cerna)
     
+    #objekty
     ctverec = pygame.draw.rect(okno, bila, ((pozice_ctverce_x, pozice_ctverce_y), (sirka_ctverce, vyska_ctverce)))
+    
     clock.tick(FPS)
     pygame.display.update()
