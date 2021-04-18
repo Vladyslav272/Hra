@@ -4,14 +4,14 @@ import sys
 clock = pygame.time.Clock()
 pygame.init()
 
-sirka_okna = 800
-vyska_okna = 600
+sirka_okna = 1200
+vyska_okna = 800
 FPS = 60
 
-sirka_ctverce = 50
-vyska_ctverce = 50
-pozice_ctverce_x = (sirka_okna - sirka_ctverce) / 2
-pozice_ctverce_y = 550
+sirka_ctverce = 20
+vyska_ctverce = 20
+pozice_ctverce_x = sirka_okna * -1
+pozice_ctverce_y = vyska_okna
 rychlost = 8
 
 cerna = (0, 0, 0)
@@ -37,12 +37,21 @@ while True:
         pozice_ctverce_x += rychlost
     if stisknuto[pygame.K_LEFT]:
         pozice_ctverce_x -= rychlost
+    if stisknuto[pygame.K_UP]:
+        pozice_ctverce_y -= rychlost
+    if stisknuto[pygame.K_DOWN]:
+        pozice_ctverce_y += rychlost
     
     if pozice_ctverce_x < 0:
         pozice_ctverce_x = 0
     if pozice_ctverce_x + sirka_ctverce > sirka_okna:
         pozice_ctverce_x = sirka_okna - sirka_ctverce
-    
+    if pozice_ctverce_y < 0:
+        pozice_ctverce_y = 0
+    if pozice_ctverce_y + vyska_ctverce > vyska_okna:
+        pozice_ctverce_y = vyska_okna - vyska_ctverce
+        
+        
     okno.fill(cerna)
     
     ctverec = pygame.draw.rect(okno, bila, ((pozice_ctverce_x, pozice_ctverce_y), (sirka_ctverce, vyska_ctverce)))
