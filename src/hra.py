@@ -1,6 +1,7 @@
 import pygame
 import sys
 
+clock = pygame.time.Clock()
 pygame.init()
 
 sirka_okna = 800
@@ -45,4 +46,5 @@ while True:
     okno.fill(cerna)
     
     ctverec = pygame.draw.rect(okno, bila, ((pozice_ctverce_x, pozice_ctverce_y), (sirka_ctverce, vyska_ctverce)))
+    clock.tick(FPS)
     pygame.display.update()
