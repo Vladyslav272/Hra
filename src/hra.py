@@ -1,6 +1,8 @@
 import pygame
 import sys
 
+pygame.init()
+
 sirka_okna = 800
 vyska_okna = 600
 FPS = 60
@@ -30,5 +32,12 @@ while True:
         pygame.quit()
         sys.exit()
         
+    if stisknuto[pygame.K_RIGHT]:
+        pozice_ctverce_x += rychlost
+    if stisknuto[pygame.K_LEFT]:
+        pozice_ctverce_x -= rychlost
+    
+    okno.fill(cerna)
+    
     ctverec = pygame.draw.rect(okno, bila, ((pozice_ctverce_x, pozice_ctverce_y), (sirka_ctverce, vyska_ctverce)))
     pygame.display.update()
