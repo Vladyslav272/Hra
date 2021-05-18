@@ -31,6 +31,7 @@ pozice_y = 200
 pozice_y2 = pozice_y + 200
 
 
+
 okno = pygame.display.set_mode((sirka_okna, vyska_okna))
 
 click = False
@@ -47,7 +48,7 @@ def main_menu():
         button_2 = pygame.Rect(pozice_x, pozice_y2, sirka_tlacitka, vyska_tlacitka)
         if button_1.collidepoint((mx, my)):
             if click:
-                game()
+                hra()
         if button_2.collidepoint((mx, my)):
             if click:
                 vypnout()
@@ -72,15 +73,17 @@ def main_menu():
         pygame.display.update()
         clock.tick(60)
  
-def game():
+def hra():
+    
+    pozice_golema_x = 50
+    pozice_golema_y = 900
+    sirka_golema = 200
+    vyska_golema = 133
+    rychlost = 10
+    
     running = True
     while running:
-        pozice_golema_x = 50
-        pozice_golema_y = 900
-        sirka_golema = 200
-        vyska_golema = 133
-        rychlost = 10
-        
+            
         okno.blit(pozadi_hra,(0, 0))
         
         stisknuto = pygame.key.get_pressed()
@@ -92,8 +95,7 @@ def game():
                 sys.exit()
         if stisknuto[pygame.K_ESCAPE]:
             running = False
-        
-        
+              
         #ovladani
         if stisknuto[pygame.K_RIGHT]:
             pozice_golema_x += rychlost
@@ -116,7 +118,6 @@ def game():
         
         okno.blit(pozadi_hra,(0, 0))
         okno.blit(golem, (pozice_golema_x, pozice_golema_y))
-        
         
         pygame.display.update()
         clock.tick(60)
