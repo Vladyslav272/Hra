@@ -17,9 +17,12 @@ def draw_text(text, font, color, surface, x, y):
 
 zelena = (0, 112, 0)
 
-golem = pygame.image.load("Golem.png")
+
+golem1 = pygame.image.load("Golem.png")
+golem2 = pygame.image.load("Golem2.png")
 pozadi = pygame.image.load("Cartoon_Forest_BG_01.png")
 pozadi_hra = pygame.image.load("Cartoon_Forest_BG_04.png")
+
 
 sirka_okna = 1920
 vyska_okna = 1080
@@ -70,11 +73,13 @@ def main_menu():
             if event.type == MOUSEBUTTONDOWN:
                 if event.button == 1:
                     click = True
+            
         pygame.display.update()
         clock.tick(60)
  
 def hra():
     
+    Golem = golem1
     pozice_golema_x = 50
     pozice_golema_y = 900
     sirka_golema = 200
@@ -98,7 +103,13 @@ def hra():
                 sys.exit()
         if stisknuto[pygame.K_ESCAPE]:
             running = False
-              
+        
+        #postava
+        if stisknuto[pygame.K_LEFT]:
+            Golem = golem2
+        if stisknuto[pygame.K_RIGHT]:
+            Golem = golem1
+        
         #ovladani
         if stisknuto[pygame.K_RIGHT]:
             pozice_golema_x += rychlost
@@ -135,7 +146,7 @@ def hra():
             pozice_golema_y = vyska_okna - vyska_golema
         
         okno.blit(pozadi_hra,(0, 0))
-        okno.blit(golem, (pozice_golema_x, pozice_golema_y))
+        okno.blit(Golem, (pozice_golema_x, pozice_golema_y))
         
         pygame.display.update()
         clock.tick(60)
