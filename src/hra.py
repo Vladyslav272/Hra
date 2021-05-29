@@ -80,6 +80,9 @@ def hra():
     sirka_golema = 200
     vyska_golema = 133
     rychlost = 10
+    skok = False
+    skok2 = 10
+    
     
     running = True
     while running:
@@ -99,12 +102,27 @@ def hra():
         #ovladani
         if stisknuto[pygame.K_RIGHT]:
             pozice_golema_x += rychlost
+            
         if stisknuto[pygame.K_LEFT]:
             pozice_golema_x -= rychlost
-        if stisknuto[pygame.K_UP]:
-            pozice_golema_y -= rychlost
-        if stisknuto[pygame.K_DOWN]:
-            pozice_golema_y += rychlost
+        
+        if not(skok):       
+            if stisknuto[pygame.K_UP]:
+                skok = True
+                
+        else:    
+            if skok2 >= -20:
+                if skok2 < 0:
+                    pozice_golema_y += (skok2 ** 2) / 2
+                    
+                else:
+                    pozice_golema_y -= (skok2 ** 2) /2
+                
+                skok2 -= 1
+                
+            else:
+                skok = False
+                skok2 = 10
             
         #omezeni pohybu
         if pozice_golema_x < 0:
