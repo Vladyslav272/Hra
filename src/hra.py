@@ -207,7 +207,8 @@ def hra():
         
         pygame.display.update()
         clock.tick(60)
- 
+        
+#vypinani 
 def vypnout():
     running = True
     while running:
