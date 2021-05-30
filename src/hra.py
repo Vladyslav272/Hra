@@ -4,7 +4,7 @@ import sys
 clock = pygame.time.Clock()
 from pygame.locals import *
 pygame.init()
-pygame.display.set_caption('Hra')
+pygame.display.set_caption('Golem')
 
  
 font = pygame.font.SysFont(None, 120)
@@ -17,10 +17,13 @@ def draw_text(text, font, color, surface, x, y):
     
 #barvy
 zelena = (0, 112, 0)
+seda = (70, 70, 70)
+bila = (255, 255, 255)
 
 #obrazky pozadi
 pozadi = pygame.image.load("Cartoon_Forest_BG_01.png")
 pozadi_hra = pygame.image.load("Cartoon_Forest_BG_04.png")
+blok = pygame.image.load("blok.png")
 
 #obrazky na animaci
 golem1 = pygame.image.load("Golem1.png")
@@ -76,7 +79,7 @@ vyska_okna = 1080
 sirka_tlacitka = 300
 vyska_tlacitka = 100
 pozice_x = (sirka_okna - sirka_tlacitka) /2
-pozice_y = 200
+pozice_y = 300
 pozice_y2 = pozice_y + 200
 
 okno = pygame.display.set_mode((sirka_okna, vyska_okna))
@@ -103,8 +106,9 @@ def main_menu():
         pygame.draw.rect(okno, (zelena), button_1)
         pygame.draw.rect(okno, (zelena), button_2)
         
-        draw_text("Play", font, (255, 255, 255), okno, (pozice_x + 55), (pozice_y + 10))
-        draw_text("Exit", font, (255, 255, 255), okno, (pozice_x + 55), (pozice_y2 + 10))
+        draw_text("Golem", font, bila, okno, (pozice_x + 25), 120)
+        draw_text("Play", font, bila, okno, (pozice_x + 55), (pozice_y + 10))
+        draw_text("Exit", font, bila, okno, (pozice_x + 55), (pozice_y2 + 10))
         
         click = False
         for event in pygame.event.get():
@@ -133,6 +137,8 @@ def hra():
     skok = False
     skok2 = 10
     animCount = 5
+    blok_pozice_y = 1032
+    blok_y = 48
     
     walkRight = [g1, g2, g3, g4, g5, g6, g7, g8, g9, g10, g11, g12, g13, g14, g15, g16, g17, g18]
     walkLeft = [j1, j2, j3, j4, j5, j6, j7, j8, j9, j10, j11, j12, j13, j14, j15, j16, j17, j18]
@@ -151,7 +157,7 @@ def hra():
         if stisknuto[pygame.K_ESCAPE]:
             running = False
         
-        #ovladani a animace
+        #ovladani + animace          
         if stisknuto[pygame.K_RIGHT]:
             pozice_golema_x += rychlost
             left = False
@@ -204,6 +210,49 @@ def hra():
             pozice_golema_y = 0
         elif pozice_golema_y + vyska_golema > vyska_okna:
             pozice_golema_y = vyska_okna - vyska_golema
+        
+        
+        #platforma
+        okno.blit(blok, (0, blok_pozice_y))
+        okno.blit(blok, (48, blok_pozice_y))
+        okno.blit(blok, (96, blok_pozice_y))
+        okno.blit(blok, (144, blok_pozice_y))
+        okno.blit(blok, (192, blok_pozice_y))
+        okno.blit(blok, (240, blok_pozice_y))
+        okno.blit(blok, (288, blok_pozice_y))
+        okno.blit(blok, (336, blok_pozice_y))
+        okno.blit(blok, (384, blok_pozice_y))
+        okno.blit(blok, (432, blok_pozice_y))
+        okno.blit(blok, (480, blok_pozice_y))
+        okno.blit(blok, (528, blok_pozice_y))
+        okno.blit(blok, (576, blok_pozice_y))
+        okno.blit(blok, (624, blok_pozice_y))
+        okno.blit(blok, (672, blok_pozice_y))
+        okno.blit(blok, (720, blok_pozice_y))
+        okno.blit(blok, (768, blok_pozice_y))
+        okno.blit(blok, (816, blok_pozice_y))
+        okno.blit(blok, (864, blok_pozice_y))
+        okno.blit(blok, (912, blok_pozice_y))
+        okno.blit(blok, (960, blok_pozice_y))
+        okno.blit(blok, (1008, blok_pozice_y))
+        okno.blit(blok, (1056, blok_pozice_y))
+        okno.blit(blok, (1104, blok_pozice_y))
+        okno.blit(blok, (1152, blok_pozice_y))
+        okno.blit(blok, (1200, blok_pozice_y))
+        okno.blit(blok, (1248, blok_pozice_y))
+        okno.blit(blok, (1296, blok_pozice_y))
+        okno.blit(blok, (1344, blok_pozice_y))
+        okno.blit(blok, (1392, blok_pozice_y))
+        okno.blit(blok, (1440, blok_pozice_y))
+        okno.blit(blok, (1488, blok_pozice_y))
+        okno.blit(blok, (1536, blok_pozice_y))
+        okno.blit(blok, (1584, blok_pozice_y))
+        okno.blit(blok, (1632, blok_pozice_y))
+        okno.blit(blok, (1680, blok_pozice_y))
+        okno.blit(blok, (1728, blok_pozice_y))
+        okno.blit(blok, (1776, blok_pozice_y))
+        okno.blit(blok, (1824, blok_pozice_y))
+        okno.blit(blok, (1872, blok_pozice_y))
         
         pygame.display.update()
         clock.tick(60)
