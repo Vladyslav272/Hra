@@ -158,12 +158,12 @@ def hra():
             running = False
         
         #ovladani + animace          
-        if stisknuto[pygame.K_RIGHT]:
+        if stisknuto[pygame.K_RIGHT] or stisknuto[pygame.K_d]:
             pozice_golema_x += rychlost
             left = False
             right = True
             
-        elif stisknuto[pygame.K_LEFT]:
+        elif stisknuto[pygame.K_LEFT] or stisknuto[pygame.K_a]:
             pozice_golema_x -= rychlost
             left = True
             right = False
@@ -172,10 +172,9 @@ def hra():
             left = False
             right = False
             animCount = 0
-            
-        
+                    
         if not(skok):       
-            if stisknuto[pygame.K_UP]:
+            if stisknuto[pygame.K_UP] or stisknuto[pygame.K_w]:
                 skok = True
                 
         else:    
