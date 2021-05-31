@@ -133,7 +133,7 @@ def hra():
     pozice_golema_y = 910
     sirka_golema = 200
     vyska_golema = 133
-    rychlost = 3
+    rychlost = 4
     skok = False
     skok2 = 10
     animCount = 5
